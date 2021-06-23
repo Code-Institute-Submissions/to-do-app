@@ -5,3 +5,6 @@ env.py
 __pycache__/
 *.py[cod]
 node_modules/
+.eslintrc.json
+package-lock.json
+package.json
