@@ -8,6 +8,10 @@ body {
     background-color: #f6f6f6;
 }
 
+section {
+    display: inline-block;
+}
+
 h1 {
     margin: 15px;
 }
