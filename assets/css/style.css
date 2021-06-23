@@ -2,8 +2,10 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* general */
 body {
     background-color: #f6f6f6;
 }
@@ -17,9 +19,26 @@ h1 {
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
     height: 50px;
     width: 100%;
     background-color: #aaa;
+}
+
+/* note section */
+section {
+    width: 30%;
+    height: 600px;
+    background-color: red;
+    margin: 50px;
+}
+
+.note-cont {
+    background-color: #aaa;
+    height: 550px;
+}
+
+#notes-flex {
+    display: flex;
+    justify-content: center;
+    height: 50%;
 }
