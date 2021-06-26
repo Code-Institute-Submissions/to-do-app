@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: none;
 }
 
 /* general */
@@ -20,7 +21,8 @@ h1 {
 }
 
 h1,
-h2 {
+h2,
+button {
     padding: 15px;
     font-family: "Montserrat", sans-serif;
 }
@@ -68,4 +70,19 @@ section {
 
 #completed {
     background-color: #1fab89;
+}
+
+/* user input section */
+#add-note {
+    width: 200px;
+    height: 50px;
+    border-bottom: 3px solid #1fab89;
+    border-radius: 5px;
+    background-color: #d1d1d1;
+    font-size: 100%;
+}
+
+#add-note:hover {
+    background-color: #1fab89;
+    border-bottom: 3px solid #9df3c4;
 }
