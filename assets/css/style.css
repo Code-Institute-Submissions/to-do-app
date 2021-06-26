@@ -1,5 +1,5 @@
 /* google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 /* global */
 * {
@@ -45,7 +45,7 @@ section {
     width: 30%;
     height: 600px;
     background-color: #9df3c4;
-    margin: 50px;
+    margin: 0 50px 50px;
     border-radius: 20px;
 }
 

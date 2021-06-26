@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="A simple to-do list application, allowing you to save your notes in the browser"
+        />
+        <meta
+            name="keywords"
+            content="to-do, notes, note taking, list, notebook"
+        />
+        <meta name="author" content="Jacob Shortall" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple to-do list application, allowing you to save your notes in the browser">
-    <meta name="keywords" content="to-do, notes, note taking, list, notebook">
-    <meta name="author" content="Jacob Shortall">
+        <title>To-Do List</title>
+        <link rel="stylesheet" href="assets/css/style.css" />
+    </head>
 
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+    <body>
+        <header>
+            <h1>To-Do List</h1>
+        </header>
 
-<body>
-    <header>
-        <h1>To-Do List</h1>
-    </header>
+        <main>
+            <!-- notes section - where to-do/completed items are -->
+            <div id="notes-flex">
+                <section>
+                    <h2>To Do</h2>
+                    <div id="to-do"></div>
+                </section>
 
-    <main>
-        <!-- notes section - where to-do/completed items are -->
-        <div id="notes-flex">
-            <section>
-                <h2>To Do</h2>
-                <div id="to-do"></div>
-            </section>
+                <section>
+                    <h2>Completed</h2>
+                    <div id="completed"></div>
+                </section>
+            </div>
 
-            <section>
-                <h2>Completed</h2>
-                <div id="completed"></div>
-            </section>
-        </div>
+            <!-- input section - where user adds notes -->
+            <div id="note-input">
+                <input type="text" />
+                <button id="submit">Submit</button>
+                <button id="clear">Clear</button>
+            </div>
+        </main>
 
-        <!-- input section - where user adds notes -->
-        <div id="note-input">
-            <input type="text">
-            <button id="submit">Submit</button>
-            <button id="clear">Clear</button>
-        </div>
-    </main>
+        <footer></footer>
 
-    <footer>
-
-    </footer>
-
-    <script src="assets/js/script.js"></script>
-</body>
-
+        <script src="assets/js/script.js"></script>
+    </body>
 </html>
