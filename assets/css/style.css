@@ -51,6 +51,21 @@ section {
     border-radius: 20px;
 }
 
+i {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 150%;
+    color: #1fab89;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+}
+
+.list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 #notes-flex {
     display: flex;
     justify-content: center;
