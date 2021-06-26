@@ -51,13 +51,18 @@ section {
     border-radius: 20px;
 }
 
-i {
+.fa-trash {
     padding: 10px;
     margin-right: 10px;
     font-size: 150%;
     color: #1fab89;
     background-color: #f6f6f6;
     border-radius: 10px;
+}
+
+.fa-trash:hover {
+    color: #f6f6f6;
+    background-color: #1fab89;
 }
 
 .list-header {
