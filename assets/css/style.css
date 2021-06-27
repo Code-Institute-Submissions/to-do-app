@@ -106,3 +106,24 @@ section {
     background-color: #1fab89;
     border-bottom: 3px solid #9df3c4;
 }
+
+/* user input modal */
+textarea {
+    resize: none;
+}
+
+#modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 40%;
+    height: 300px;
+    width: 600px;
+    background-color: #9df3c4;
+}
+
+#add-conf {
+    margin-top: 10px;
+}

@@ -17,7 +17,7 @@
         <title>To-Do List</title>
         <link rel="stylesheet" href="assets/css/style.css" />
 
-        <!-- font awsesome icons -->
+        <!-- font awesome icons -->
         <link
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -39,6 +39,7 @@
                         <h2>To Do</h2>
                         <i class="fas fa-trash"></i>
                     </header>
+                    <!-- note container -->
                     <div id="to-do"></div>
                 </section>
 
@@ -47,12 +48,24 @@
                         <h2>Completed</h2>
                         <i class="fas fa-trash"></i>
                     </header>
+                    <!-- note container -->
                     <div id="completed"></div>
                 </section>
             </div>
 
             <!-- input section - where user adds notes -->
             <button id="add-note">Add Item</button>
+
+            <!-- modal box for user to enter text -->
+            <div id="modal">
+                <textarea
+                    name="note-input"
+                    id="note-input"
+                    cols="50"
+                    rows="10"
+                ></textarea>
+                <button id="add-conf">Add Item</button>
+            </div>
         </main>
 
         <footer></footer>
