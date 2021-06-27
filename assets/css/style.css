@@ -147,4 +147,5 @@ textarea {
 #add-conf:hover {
     background-color: #1fab89;
     border-bottom: 3px solid #62d2a2;
+    cursor: pointer;
 }
