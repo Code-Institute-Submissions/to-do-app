@@ -22,7 +22,8 @@ h1 {
 
 h1,
 h2,
-button {
+button,
+textarea {
     padding: 15px;
     font-family: "Montserrat", sans-serif;
 }
@@ -110,10 +111,19 @@ section {
 /* user input modal */
 textarea {
     resize: none;
+    border-radius: 10px;
+}
+
+.fa-times {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 150%;
+    cursor: pointer;
 }
 
 #modal {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -122,8 +132,17 @@ textarea {
     height: 300px;
     width: 600px;
     background-color: #9df3c4;
+    border-radius: 10px;
 }
 
 #add-conf {
-    margin-top: 10px;
+    margin-top: 15px;
+    background-color: #d1d1d1;
+    border-radius: 5px;
+    border-bottom: 3px solid #1fab89;
+}
+
+#add-conf:hover {
+    background-color: #1fab89;
+    border-bottom: 3px solid #62d2a2;
 }
