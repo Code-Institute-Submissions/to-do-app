@@ -64,6 +64,7 @@ section {
 .fa-trash:hover {
     color: #f6f6f6;
     background-color: #1fab89;
+    cursor: pointer;
 }
 
 .list-header {
@@ -106,6 +107,7 @@ section {
 #add-note:hover {
     background-color: #1fab89;
     border-bottom: 3px solid #9df3c4;
+    cursor: pointer;
 }
 
 /* user input modal */
