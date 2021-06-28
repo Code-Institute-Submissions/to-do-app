@@ -5,6 +5,11 @@ addNoteButton.addEventListener("click", showModal);
 
 /** displays modal for user to enter text */
 function showModal() {
+    // darkens background elements with overlay
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "block";
+
+    // shows modal
     const modal = document.getElementById("modal");
     modal.style.display = "flex";
 
@@ -15,6 +20,11 @@ function showModal() {
 
 /** closes modal */
 function closeModal() {
+    // shows modal
     const modal = document.getElementById("modal");
     modal.style.display = "none";
+
+    // removes darkened overlay
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "none";
 }
