@@ -24,7 +24,7 @@ function showModal() {
 
 /** closes modal */
 function closeModal() {
-    // shows modal
+    // hides modal
     const modal = document.getElementById("modal");
     modal.style.display = "none";
 
@@ -40,20 +40,25 @@ function addNote() {
 
     // check text area isn't empty
     if (input) {
-        // creating element to be added to list
-        const div = document.createElement("div");
-        div.innerHTML = `
+        // add created element
+        toDoContainer.appendChild(createNote(input));
+    } else {
+        alert("Please enter some text.");
+    }
+}
+
+/** creates note element from given user input */
+function createNote(input) {
+    // creating element to be added to list
+    const div = document.createElement("div");
+    div.innerHTML = `
             <p>${input}</p>
             <div class="button-cont">
                 <button class="complete">complete</button>
                 <button class="remove">remove</button>
             </div>
         `;
-        div.className = "to-do-item";
+    div.className = "to-do-item";
 
-        // add created element
-        toDoContainer.appendChild(div);
-    } else {
-        alert("Please enter some text.");
-    }
+    return div;
 }
