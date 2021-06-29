@@ -7,6 +7,7 @@
     padding: 0;
     box-sizing: border-box;
     border: none;
+    font-family: "Montserrat", sans-serif;
 }
 
 /* general */
@@ -21,11 +22,8 @@ h1 {
 }
 
 h1,
-h2,
-button,
-textarea {
+h2 {
     padding: 15px;
-    font-family: "Montserrat", sans-serif;
 }
 
 main {
@@ -84,6 +82,7 @@ section {
 #completed {
     height: 550px;
     border-radius: 0 0 20px 20px;
+    padding: 15px;
 }
 
 #to-do {
@@ -92,6 +91,40 @@ section {
 
 #completed {
     background-color: #1fab89;
+}
+
+/* user note items */
+.to-do-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.to-do-item p {
+    width: 70%;
+}
+
+.button-cont i {
+    font-size: 200%;
+    padding: 5px;
+    border: 3px solid transparent;
+    border-radius: 5px;
+}
+
+.button-cont i:hover {
+    cursor: pointer;
+}
+
+.fa-check-square {
+    color: #1fab89;
+}
+
+.fa-ban {
+    color: #c90000;
 }
 
 /* user input section */
@@ -114,6 +147,7 @@ section {
 textarea {
     resize: none;
     border-radius: 10px;
+    padding: 15px;
 }
 
 .fa-times {
@@ -143,6 +177,7 @@ textarea {
     background-color: #d1d1d1;
     border-radius: 5px;
     border-bottom: 3px solid #1fab89;
+    padding: 15px;
 }
 
 #add-conf:hover {
