@@ -42,6 +42,9 @@ function addNote() {
     if (input) {
         // add created element
         toDoContainer.appendChild(createNote(input));
+
+        // add input to localStorage
+        addToLocalStorage(input);
     } else {
         alert("Please enter some text.");
     }
@@ -61,4 +64,18 @@ function createNote(input) {
     div.className = "to-do-item";
 
     return div;
+}
+
+/** adds user input to localStorage so it's saved on reload */
+function addToLocalStorage(input) {
+    if ("toDo" in localStorage) {
+        // convert localStorage into array to push new item
+        const arr = localStorage.toDo.split(",");
+        arr.push(input);
+        localStorage.toDo = arr;
+    } else {
+        // create new array and localStorage object
+        const arr = [input];
+        localStorage.toDo = arr;
+    }
 }
