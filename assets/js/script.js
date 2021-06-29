@@ -54,8 +54,8 @@ function createNote(input) {
     div.innerHTML = `
             <p>${input}</p>
             <div class="button-cont">
-                <button class="complete">complete</button>
-                <button class="remove">remove</button>
+                <i class="fas fa-check-square"></i>
+                <i class="fas fa-ban"></i>
             </div>
         `;
     div.className = "to-do-item";
