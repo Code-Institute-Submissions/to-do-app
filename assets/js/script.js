@@ -1,7 +1,15 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-use-before-define */
 
+// add event listener to "add note" button
 const addNoteButton = document.getElementById("add-note");
 addNoteButton.addEventListener("click", showModal);
+
+// add event listeners to each trash button
+const clearButtons = document.getElementsByClassName("fa-trash");
+for (const button of clearButtons) {
+    button.addEventListener("click", clearAll);
+}
 
 /** displays modal for user to enter text */
 function showModal() {
@@ -77,5 +85,15 @@ function addToLocalStorage(input) {
         // create new array and localStorage object
         const arr = [input];
         localStorage.toDo = arr;
+    }
+}
+
+/** clears all items from either the to-do or completed list */
+function clearAll() {
+    // check which list to clear by grabbing class attribute
+    if (this.classList.contains("to-do-clear")) {
+        document.getElementById("to-do").innerHTML = "";
+    } else {
+        document.getElementById("completed").innerHTML = "";
     }
 }
