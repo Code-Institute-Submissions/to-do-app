@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-use-before-define */
 
@@ -93,7 +94,9 @@ function clearAll() {
     // check which list to clear by grabbing class attribute
     if (this.classList.contains("to-do-clear")) {
         document.getElementById("to-do").innerHTML = "";
+        delete localStorage.toDo; // clear from localStorage
     } else {
         document.getElementById("completed").innerHTML = "";
+        delete localStorage.completed; // clear from localStorage
     }
 }
