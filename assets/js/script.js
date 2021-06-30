@@ -54,6 +54,9 @@ function addNote() {
 
         // add input to localStorage
         addToLocalStorage(input);
+
+        // add event listeners to each button when new item is created
+        addItemListeners();
     } else {
         alert("Please enter some text.");
     }
@@ -100,3 +103,24 @@ function clearAll() {
         delete localStorage.completed; // clear from localStorage
     }
 }
+
+/** adds event listeners to each button when new item is added to to-do list
+ */
+function addItemListeners() {
+    // get most recently added item
+    const newItem = document.getElementById("to-do").lastChild;
+    // adding delete/complete event listeners
+    newItem
+        .getElementsByClassName("fa-ban")[0]
+        .addEventListener("click", deleteItem);
+    newItem
+        .getElementsByClassName("fa-check-square")[0]
+        .addEventListener("click", completeItem);
+}
+
+// deletes single item from list
+function deleteItem() {
+    this.closest(".to-do-item").remove();
+}
+
+function completeItem() {}
