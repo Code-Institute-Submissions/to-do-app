@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable no-alert */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-use-before-define */
@@ -120,6 +121,20 @@ function addItemListeners() {
 
 // deletes single item from list
 function deleteItem() {
+    // get localStorage, remove item using splice() and push array back
+    const arr = localStorage.toDo.split(",");
+    // this check is to avoid an empty string in localStorage is only 1 item exists
+    if (arr.length > 1) {
+        arr.splice(
+            arr.indexOf(this.closest(".to-do-item").children[0].innerHTML),
+            1
+        );
+        localStorage.toDo = arr;
+    } else {
+        localStorage.clear();
+    }
+
+    // remove item from DOM
     this.closest(".to-do-item").remove();
 }
 
