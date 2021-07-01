@@ -54,7 +54,7 @@ function addNote() {
         toDoContainer.appendChild(createNote(input.value));
 
         // add input to localStorage
-        addToLocalStorage(input.value);
+        addToLocalStorage(input.value, "todo");
 
         // add event listeners to each button when new item is created
         addItemListeners();
@@ -83,16 +83,29 @@ function createNote(input) {
 }
 
 /** adds user input to localStorage so it's saved on reload */
-function addToLocalStorage(input) {
-    if ("toDo" in localStorage) {
-        // convert localStorage into array to push new item
-        const arr = localStorage.toDo.split(",");
-        arr.push(input);
-        localStorage.toDo = arr;
-    } else {
-        // create new array and localStorage object
-        const arr = [input];
-        localStorage.toDo = arr;
+function addToLocalStorage(input, list) {
+    if (list === "todo") {
+        if ("toDo" in localStorage) {
+            // convert localStorage into array to push new item
+            const arr = localStorage.toDo.split(",");
+            arr.push(input);
+            localStorage.toDo = arr;
+        } else {
+            // create new array and localStorage object
+            const arr = [input];
+            localStorage.toDo = arr;
+        }
+    } else if (list === "completed") {
+        if ("completed" in localStorage) {
+            // convert localStorage into array to push new item
+            const arr = localStorage.completed.split(",");
+            arr.push(input);
+            localStorage.completed = arr;
+        } else {
+            // create new array and localStorage object
+            const arr = [input];
+            localStorage.completed = arr;
+        }
     }
 }
 
@@ -154,6 +167,24 @@ function completeItem() {
     // add new event listener to uncheck the item
     this.removeEventListener("click", completeItem);
     this.addEventListener("click", uncheckItem);
+
+    const item = this.closest(".to-do-item").children[0].innerHTML;
+    removeLocal(item, "todo");
+    addToLocalStorage(item, "completed");
+}
+
+// handles removing items from localStorage
+function removeLocal(item, list) {
+    // checking which list item is in
+    if (list === "todo") {
+        const arr = localStorage.toDo.split(",");
+        arr.splice(arr.indexOf(item), 1);
+        localStorage.toDo = arr;
+    } else if (list === "completed") {
+        const arr = localStorage.completed.split(",");
+        arr.splice(arr.indexOf(item), 1);
+        localStorage.completed = arr;
+    }
 }
 
 function uncheckItem() {}
