@@ -137,17 +137,20 @@ function addItemListeners() {
 
 // deletes single item from list
 function deleteItem() {
-    // get localStorage, remove item using splice() and push array back
-    const arr = localStorage.toDo.split(",");
-    // this check is to avoid an empty string in localStorage is only 1 item exists
-    if (arr.length > 1) {
-        arr.splice(
-            arr.indexOf(this.closest(".to-do-item").children[0].innerHTML),
-            1
+    // checks which list the item is in so it can be correctly removed from localStorage
+    if (
+        this.closest(".button-cont").children[0].classList.contains(
+            "fa-undo-alt"
+        )
+    ) {
+        // removes from completed list localStorage
+        removeLocal(
+            this.closest(".to-do-item").children[0].innerHTML,
+            "completed"
         );
-        localStorage.toDo = arr;
     } else {
-        localStorage.clear();
+        // removes from toDo list localStorage
+        removeLocal(this.closest(".to-do-item").children[0].innerHTML, "todo");
     }
 
     // remove item from DOM
