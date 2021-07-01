@@ -141,4 +141,19 @@ function deleteItem() {
     this.closest(".to-do-item").remove();
 }
 
-function completeItem() {}
+// marks item as completed, moving it over to the completed section
+function completeItem() {
+    // move div over from to-do to completed section
+    const completedBox = document.getElementById("completed");
+    completedBox.appendChild(this.closest(".to-do-item"));
+
+    // change icon from check to undo
+    this.classList.remove("fa-check-square");
+    this.classList.add("fa-undo-alt");
+
+    // add new event listener to uncheck the item
+    this.removeEventListener("click", completeItem);
+    this.addEventListener("click", uncheckItem);
+}
+
+function uncheckItem() {}

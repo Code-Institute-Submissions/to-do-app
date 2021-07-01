@@ -119,7 +119,8 @@ section {
     cursor: pointer;
 }
 
-.fa-check-square {
+.fa-check-square,
+.fa-undo-alt {
     color: #1fab89;
 }
 
