@@ -13,6 +13,10 @@ for (const button of clearButtons) {
     button.addEventListener("click", clearAll);
 }
 
+// load items from localStorage
+getToDoLocalStorage();
+getCompletedLocalStorage();
+
 /** displays modal for user to enter text */
 function showModal() {
     // darkens background elements with overlay
@@ -238,6 +242,32 @@ function removeLocal(item, list) {
             localStorage.completed = arr;
         } else {
             delete localStorage.completed;
+        }
+    }
+}
+
+/** loads items from toDo localStorage value */
+function getToDoLocalStorage() {
+    if ("toDo" in localStorage) {
+        const arr = localStorage.toDo.split(",");
+        const toDoContainer = document.getElementById("to-do");
+
+        for (const note of arr) {
+            toDoContainer.appendChild(createNote(note, "todo"));
+            addToDoListeners();
+        }
+    }
+}
+
+/** loads items from completed localStorage value */
+function getCompletedLocalStorage() {
+    if ("completed" in localStorage) {
+        const arr = localStorage.completed.split(",");
+        const completedContainer = document.getElementById("completed");
+
+        for (const note of arr) {
+            completedContainer.appendChild(createNote(note, "completed"));
+            addCompletedListeners();
         }
     }
 }
