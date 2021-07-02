@@ -171,6 +171,7 @@ function completeItem() {
     this.removeEventListener("click", completeItem);
     this.addEventListener("click", uncheckItem);
 
+    // move item in localStorage from toDo to completed
     const item = this.closest(".to-do-item").children[0].innerHTML;
     removeLocal(item, "todo");
     addToLocalStorage(item, "completed");
@@ -200,4 +201,21 @@ function removeLocal(item, list) {
     }
 }
 
-function uncheckItem() {}
+function uncheckItem() {
+    // move div over from completed to to-do section
+    const toDoBox = document.getElementById("to-do");
+    toDoBox.appendChild(this.closest(".to-do-item"));
+
+    // change icon from undo to check
+    this.classList.remove("fa-undo-alt");
+    this.classList.add("fa-check-square");
+
+    // add new event listener to check item
+    this.removeEventListener("click", uncheckItem);
+    this.addEventListener("click", completeItem);
+
+    // move item in localStorage from completed to toDo
+    const item = this.closest(".to-do-item").children[0].innerHTML;
+    removeLocal(item, "completed");
+    addToLocalStorage(item, "todo");
+}
