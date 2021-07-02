@@ -51,13 +51,13 @@ function addNote() {
     // check text area isn't empty
     if (input.value) {
         // add created element
-        toDoContainer.appendChild(createNote(input.value));
+        toDoContainer.appendChild(createNote(input.value, "todo"));
 
         // add input to localStorage
         addToLocalStorage(input.value, "todo");
 
         // add event listeners to each button when new item is created
-        addItemListeners();
+        addToDoListeners();
 
         input.value = "";
         input.focus();
@@ -67,16 +67,26 @@ function addNote() {
 }
 
 /** creates note element from given user input */
-function createNote(input) {
+function createNote(input, list) {
     // creating element to be added to list
     const div = document.createElement("div");
-    div.innerHTML = `
+    if (list === "todo") {
+        div.innerHTML = `
             <p>${input}</p>
             <div class="button-cont">
                 <i class="fas fa-check-square"></i>
                 <i class="fas fa-ban"></i>
             </div>
         `;
+    } else if (list === "completed") {
+        div.innerHTML = `
+            <p>${input}</p>
+            <div class="button-cont">
+                <i class="fas fa-undo-alt"></i>
+                <i class="fas fa-ban"></i>
+            </div>
+        `;
+    }
     div.className = "to-do-item";
 
     return div;
@@ -122,7 +132,7 @@ function clearAll() {
 }
 
 /** adds event listeners to each button when new item is added to to-do list */
-function addItemListeners() {
+function addToDoListeners() {
     // get most recently added item
     const newItem = document.getElementById("to-do").lastChild;
     // adding delete/complete event listeners
@@ -132,6 +142,18 @@ function addItemListeners() {
     newItem
         .getElementsByClassName("fa-check-square")[0]
         .addEventListener("click", completeItem);
+}
+
+function addCompletedListeners() {
+    // get most recently added item
+    const newItem = document.getElementById("completed").lastChild;
+    // adding delete/uncheck event listeners
+    newItem
+        .getElementsByClassName("fa-ban")[0]
+        .addEventListener("click", deleteItem);
+    newItem
+        .getElementsByClassName("fa-undo-alt")[0]
+        .addEventListener("click", uncheckItem);
 }
 
 /** deletes single item from list */
