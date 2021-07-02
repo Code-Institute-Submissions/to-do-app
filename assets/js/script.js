@@ -181,12 +181,22 @@ function removeLocal(item, list) {
     // checking which list item is in
     if (list === "todo") {
         const arr = localStorage.toDo.split(",");
-        arr.splice(arr.indexOf(item), 1);
-        localStorage.toDo = arr;
+        // this check is to avoid an empty string in localStorage if there's only one item
+        if (arr.length > 1) {
+            arr.splice(arr.indexOf(item), 1);
+            localStorage.toDo = arr;
+        } else {
+            delete localStorage.toDo;
+        }
     } else if (list === "completed") {
         const arr = localStorage.completed.split(",");
-        arr.splice(arr.indexOf(item), 1);
-        localStorage.completed = arr;
+        // this check is to avoid an empty string in localStorage if there's only one item
+        if (arr.length > 1) {
+            arr.splice(arr.indexOf(item), 1);
+            localStorage.completed = arr;
+        } else {
+            delete localStorage.completed;
+        }
     }
 }
 
