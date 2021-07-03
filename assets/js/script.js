@@ -65,22 +65,22 @@ function closeModal() {
 
 /** adds note to to do list */
 function addNote() {
-    const input = document.getElementById("note-input");
+    const textArea = document.getElementById("note-input");
     const toDoContainer = document.getElementById("to-do");
 
     // check text area isn't empty
-    if (input.value) {
+    if (textArea.value) {
         // add created element
-        toDoContainer.appendChild(createNote(input.value, "todo"));
+        toDoContainer.appendChild(createNote(textArea.value, "todo"));
 
         // add input to localStorage
-        addToLocalStorage(input.value, "todo");
+        addToLocalStorage(textArea.value, "todo");
 
         // add event listeners to each button when new item is created
         addToDoListeners();
 
-        input.value = "";
-        input.focus();
+        textArea.value = "";
+        textArea.focus();
     } else {
         alert("Please enter some text.");
     }
