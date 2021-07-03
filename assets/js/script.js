@@ -3,38 +3,40 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-use-before-define */
 
-// add event listener to "add note" button
-const addNoteButton = document.getElementById("add-note");
-addNoteButton.addEventListener("click", showModal);
+document.addEventListener("DOMContentLoaded", () => {
+    // add event listener to "add note" button
+    const addNoteButton = document.getElementById("add-note");
+    addNoteButton.addEventListener("click", showModal);
 
-// add event listeners to each trash button
-const clearButtons = document.getElementsByClassName("fa-trash");
-for (const button of clearButtons) {
-    button.addEventListener("click", clearAll);
-}
-
-// add event listener to modal cross
-const modalCross = document.getElementsByClassName("fa-times")[0];
-modalCross.addEventListener("click", closeModal);
-
-// add event listener to "add note" button
-const confNote = document.getElementById("add-conf");
-confNote.addEventListener("click", addNote);
-
-// add event listener to textarea for the enter and escape keys
-const textArea = document.getElementById("note-input");
-textArea.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        addNote();
-    } else if (event.key === "Escape") {
-        closeModal();
+    // add event listeners to each trash button
+    const clearButtons = document.getElementsByClassName("fa-trash");
+    for (const button of clearButtons) {
+        button.addEventListener("click", clearAll);
     }
-});
 
-// load items from localStorage
-getToDoLocalStorage();
-getCompletedLocalStorage();
+    // add event listener to modal cross
+    const modalCross = document.getElementsByClassName("fa-times")[0];
+    modalCross.addEventListener("click", closeModal);
+
+    // add event listener to "add note" button
+    const confNote = document.getElementById("add-conf");
+    confNote.addEventListener("click", addNote);
+
+    // add event listener to textarea for the enter and escape keys
+    const textArea = document.getElementById("note-input");
+    textArea.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            addNote();
+        } else if (event.key === "Escape") {
+            closeModal();
+        }
+    });
+
+    // load items from localStorage
+    getToDoLocalStorage();
+    getCompletedLocalStorage();
+});
 
 /** displays modal for user to enter text */
 function showModal() {
@@ -46,7 +48,8 @@ function showModal() {
     const modal = document.getElementById("modal");
     modal.style.display = "flex";
 
-    textArea.focus();
+    // set focus to textarea
+    document.getElementById("note-input").focus();
 }
 
 /** closes modal */
