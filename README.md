@@ -67,3 +67,10 @@ The site is designed to be responsive across all devices, making it easy to use 
 
 ![localStorage notes](assets/images/local-storage-notes.JPG)
 ![localStorage object](assets/images/local-storage.JPG)
+
+### Features to Implement in the Future
+
+* Database usage for user notes instead of localStorage. 
+    * localStorage has constraints that would be resolved if a database was used. For example, localStorage can only store around 5MB of data. It also requires more logic to retrieve data as it's all stored in a string.
+* Drag and drop movement for notes.
+* Multiple notebooks that the user can switch between.
