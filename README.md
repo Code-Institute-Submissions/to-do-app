@@ -13,3 +13,12 @@ The site is designed to be responsive across all devices, making it easy to use 
 * The user wants to be able to keep track of their notes by marking/un-marking them as complete.
 * The user wants their previously made notes to persist after leaving the site.
 * The user wants to be able to get in touch with any queries/issues they're experiencing.
+
+### Design
+
+* Colour Scheme 
+    * The colours used across the site are a mix of blue/green shades. They are all cool tones, which are not to harsh on the eye.
+* Typography 
+    * The Montserrat font is used across the page, with Sans-Serif as the fallback. This font is clear and simple, and does not distract the user too much. It's simplicity is well suited to an app of this nature.
+* Imagery 
+    * While there are no images present on the site, the icons and style used is clean and coherent, with colours appropriately matched across the page.
