@@ -34,6 +34,17 @@ function showModal() {
     // add event listener to "add note" button
     const confNote = document.getElementById("add-conf");
     confNote.addEventListener("click", addNote);
+
+    // add event listener to textarea for the enter and escape keys
+    const textArea = document.getElementById("note-input");
+    textArea.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            addNote();
+        } else if (event.key === "Escape") {
+            closeModal();
+        }
+    });
 }
 
 /** closes modal */
