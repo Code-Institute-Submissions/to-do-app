@@ -13,6 +13,25 @@ for (const button of clearButtons) {
     button.addEventListener("click", clearAll);
 }
 
+// add event listener to modal cross
+const modalCross = document.getElementsByClassName("fa-times")[0];
+modalCross.addEventListener("click", closeModal);
+
+// add event listener to "add note" button
+const confNote = document.getElementById("add-conf");
+confNote.addEventListener("click", addNote);
+
+// add event listener to textarea for the enter and escape keys
+const textArea = document.getElementById("note-input");
+textArea.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        addNote();
+    } else if (event.key === "Escape") {
+        closeModal();
+    }
+});
+
 // load items from localStorage
 getToDoLocalStorage();
 getCompletedLocalStorage();
@@ -27,24 +46,7 @@ function showModal() {
     const modal = document.getElementById("modal");
     modal.style.display = "flex";
 
-    // add event listener to modal cross
-    const modalCross = document.getElementsByClassName("fa-times")[0];
-    modalCross.addEventListener("click", closeModal);
-
-    // add event listener to "add note" button
-    const confNote = document.getElementById("add-conf");
-    confNote.addEventListener("click", addNote);
-
-    // add event listener to textarea for the enter and escape keys
-    const textArea = document.getElementById("note-input");
-    textArea.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            addNote();
-        } else if (event.key === "Escape") {
-            closeModal();
-        }
-    });
+    textArea.focus();
 }
 
 /** closes modal */
