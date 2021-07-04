@@ -211,3 +211,15 @@ textarea {
         width: 50%;
     }
 }
+
+@media screen and (max-height: 800px) {
+    /* note section */
+    section {
+        height: 500px;
+    }
+
+    #to-do,
+    #completed {
+        height: 450px;
+    }
+}
