@@ -67,10 +67,6 @@ section {
     cursor: pointer;
 }
 
-.fa-plus {
-    visibility: hidden;
-}
-
 .list-header {
     display: flex;
     align-items: center;
@@ -133,22 +129,6 @@ section {
 
 .fa-ban {
     color: #c90000;
-}
-
-/* user input section */
-#add-note {
-    width: 200px;
-    height: 50px;
-    border-bottom: 3px solid #1fab89;
-    border-radius: 5px;
-    background-color: #d1d1d1;
-    font-size: 100%;
-}
-
-#add-note:hover {
-    background-color: #1fab89;
-    border-bottom: 3px solid #9df3c4;
-    cursor: pointer;
 }
 
 /* user input modal */
@@ -241,18 +221,9 @@ textarea {
         width: 80%;
     }
 
-    .fa-plus {
-        visibility: visible;
-    }
-
     #notes-flex {
         flex-direction: column;
         align-items: center;
-    }
-
-    /* user input section */
-    #add-note {
-        display: none;
     }
 
     /* user input modal */
