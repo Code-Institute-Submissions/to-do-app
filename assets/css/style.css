@@ -197,3 +197,17 @@ textarea {
     position: fixed;
     top: 0;
 }
+
+/* media queries */
+@media screen and (max-width: 1250px) {
+    /* user note items */
+    .to-do-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* note section */
+    section {
+        width: 50%;
+    }
+}
