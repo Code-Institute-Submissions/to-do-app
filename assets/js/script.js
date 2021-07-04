@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const addNoteButton = document.getElementById("add-note");
     addNoteButton.addEventListener("click", showModal);
 
+    // add event listener to mobile "add note" button
+    const addNoteButtonMobile = document.getElementsByClassName("fa-plus")[0];
+    addNoteButtonMobile.addEventListener("click", showModal);
+
     // add event listeners to each trash button
     const clearButtons = document.getElementsByClassName("fa-trash");
     for (const button of clearButtons) {
