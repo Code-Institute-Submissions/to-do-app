@@ -50,7 +50,8 @@ section {
     border-radius: 20px;
 }
 
-.fa-trash {
+.fa-trash,
+.fa-plus {
     padding: 10px;
     margin-right: 10px;
     font-size: 150%;
@@ -59,10 +60,15 @@ section {
     border-radius: 10px;
 }
 
-.fa-trash:hover {
+.fa-trash:hover,
+.fa-plus:hover {
     color: #f6f6f6;
     background-color: #1fab89;
     cursor: pointer;
+}
+
+.fa-plus {
+    visibility: hidden;
 }
 
 .list-header {
@@ -221,5 +227,31 @@ textarea {
     #to-do,
     #completed {
         height: 450px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    /* global */
+    h1 {
+        text-align: center;
+    }
+
+    /* note section */
+    section {
+        width: 80%;
+    }
+
+    .fa-plus {
+        visibility: visible;
+    }
+
+    #notes-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* user input section */
+    #add-note {
+        display: none;
     }
 }
