@@ -3,26 +3,25 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-use-before-define */
 
-document.addEventListener("DOMContentLoaded", () => {
-    // add event listener to "add note" button
+/** This function is responsible for adding event listeners to elements
+ * that are present on page load, and loading previously added items
+ * from localStorage
+ */
+function initialiseApp() {
     const addNoteButton = document.getElementsByClassName("fa-plus")[0];
     addNoteButton.addEventListener("click", showModal);
 
-    // add event listeners to each trash button
     const clearButtons = document.getElementsByClassName("fa-trash");
     for (const button of clearButtons) {
         button.addEventListener("click", clearAll);
     }
 
-    // add event listener to modal cross
     const modalCross = document.getElementsByClassName("fa-times")[0];
     modalCross.addEventListener("click", closeModal);
 
-    // add event listener to "add note" button
     const confNote = document.getElementById("add-conf");
     confNote.addEventListener("click", addNote);
 
-    // add event listener to textarea for the enter and escape keys
     const textArea = document.getElementById("note-input");
     textArea.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
@@ -33,50 +32,45 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // load items from localStorage
     getToDoLocalStorage();
     getCompletedLocalStorage();
-});
+}
 
-/** displays modal for user to enter text */
+/** Darkens background, displays modal for user to enter text, and
+ * sets focus upon displaying.
+ */
 function showModal() {
-    // darkens background elements with overlay
     const overlay = document.getElementById("overlay");
     overlay.style.display = "block";
 
-    // shows modal
     const modal = document.getElementById("modal");
     modal.style.display = "flex";
 
-    // set focus to textarea
     document.getElementById("note-input").focus();
 }
 
-/** closes modal */
+/** Removes darkened background and closes modal */
 function closeModal() {
-    // hides modal
     const modal = document.getElementById("modal");
     modal.style.display = "none";
 
-    // removes darkened overlay
     const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
 }
 
-/** adds note to to do list */
+/** This function handles the adding of a note. It checks that the
+ * user has entered some text, adds the text to the to-do list and
+ * localStorage, and add necessary event listeners.
+ */
 function addNote() {
     const textArea = document.getElementById("note-input");
     const toDoContainer = document.getElementById("to-do");
 
-    // check text area isn't empty
     if (textArea.value) {
-        // add created element
         toDoContainer.appendChild(createNote(textArea.value, "todo"));
 
-        // add input to localStorage
         addToLocalStorage(textArea.value, "todo");
 
-        // add event listeners to each button when new item is created
         addToDoListeners();
 
         textArea.value = "";
@@ -86,7 +80,9 @@ function addNote() {
     }
 }
 
-/** creates note element from given user input */
+/** creates note element from given user input and returns it
+ * to be used by other functions
+ */
 function createNote(input, list) {
     // creating element to be added to list
     const div = document.createElement("div");
@@ -112,7 +108,7 @@ function createNote(input, list) {
     return div;
 }
 
-/** adds user input to localStorage so it's saved on reload */
+/** Adds user input to localStorage so it's saved on reload */
 function addToLocalStorage(input, list) {
     if (list === "todo") {
         if ("toDo" in localStorage) {
@@ -139,23 +135,21 @@ function addToLocalStorage(input, list) {
     }
 }
 
-/** clears all items from either the to-do or completed list */
+/** Clears all items from either the to-do or completed list */
 function clearAll() {
     // check which list to clear by grabbing class attribute
     if (this.classList.contains("to-do-clear")) {
         document.getElementById("to-do").innerHTML = "";
-        delete localStorage.toDo; // clear from localStorage
+        delete localStorage.toDo;
     } else {
         document.getElementById("completed").innerHTML = "";
-        delete localStorage.completed; // clear from localStorage
+        delete localStorage.completed;
     }
 }
 
-/** adds event listeners to each button when new item is added to to-do list */
+/** Adds event listeners to each button when new item is added to to-do list */
 function addToDoListeners() {
-    // get most recently added item
     const newItem = document.getElementById("to-do").lastChild;
-    // adding delete/complete event listeners
     newItem
         .getElementsByClassName("fa-ban")[0]
         .addEventListener("click", deleteItem);
@@ -164,10 +158,9 @@ function addToDoListeners() {
         .addEventListener("click", completeItem);
 }
 
+/** Adds event listeners to each button when new item is added to completed list */
 function addCompletedListeners() {
-    // get most recently added item
     const newItem = document.getElementById("completed").lastChild;
-    // adding delete/uncheck event listeners
     newItem
         .getElementsByClassName("fa-ban")[0]
         .addEventListener("click", deleteItem);
@@ -176,7 +169,7 @@ function addCompletedListeners() {
         .addEventListener("click", uncheckItem);
 }
 
-/** deletes single item from list */
+/** Deletes single item from list */
 function deleteItem() {
     // checks which list the item is in so it can be correctly removed from localStorage
     if (
@@ -184,66 +177,61 @@ function deleteItem() {
             "fa-undo-alt"
         )
     ) {
-        // removes from completed list localStorage
         removeLocal(
             this.closest(".to-do-item").children[0].innerHTML,
             "completed"
         );
     } else {
-        // removes from toDo list localStorage
         removeLocal(this.closest(".to-do-item").children[0].innerHTML, "todo");
     }
 
-    // remove item from DOM
     this.closest(".to-do-item").remove();
 }
 
-/** marks item as completed, moving it over to the completed section */
+/** Marks item as completed, moving it over to the completed section,
+ * handling localStorage movement and adding appropriate event listener
+ */
 function completeItem() {
-    // move div over from to-do to completed section
     const completedBox = document.getElementById("completed");
     completedBox.appendChild(this.closest(".to-do-item"));
 
-    // change icon from check to undo
     this.classList.remove("fa-check-square");
     this.classList.add("fa-undo-alt");
 
-    // add new event listener to uncheck the item
     this.removeEventListener("click", completeItem);
     this.addEventListener("click", uncheckItem);
 
-    // move item in localStorage from toDo to completed
     const item = this.closest(".to-do-item").children[0].innerHTML;
     removeLocal(item, "todo");
     addToLocalStorage(item, "completed");
 }
 
-/** unchecks item, moving it over to the to-do section */
+/** Marks item as incomplete, moving it over to the to-do section,
+ * handling localStorage movement and adding appropriate event listener
+ */
 function uncheckItem() {
-    // move div over from completed to to-do section
     const toDoBox = document.getElementById("to-do");
     toDoBox.appendChild(this.closest(".to-do-item"));
 
-    // change icon from undo to check
     this.classList.remove("fa-undo-alt");
     this.classList.add("fa-check-square");
 
-    // add new event listener to check item
     this.removeEventListener("click", uncheckItem);
     this.addEventListener("click", completeItem);
 
-    // move item in localStorage from completed to toDo
     const item = this.closest(".to-do-item").children[0].innerHTML;
     removeLocal(item, "completed");
     addToLocalStorage(item, "todo");
 }
 
-/** handles removing items from localStorage */
+/** Removes a single item from localStorage, given the item's text
+ * and list type as parameters. If there is only one item in the
+ * value for the respective localStorage, it will be deleted to
+ * avoid an empty string.
+ */
 function removeLocal(item, list) {
-    // checking which list item is in
     if (list === "todo") {
         const arr = localStorage.toDo.split(",");
-        // this check is to avoid an empty string in localStorage if there's only one item
         if (arr.length > 1) {
             arr.splice(arr.indexOf(item), 1);
             localStorage.toDo = arr;
@@ -252,7 +240,6 @@ function removeLocal(item, list) {
         }
     } else if (list === "completed") {
         const arr = localStorage.completed.split(",");
-        // this check is to avoid an empty string in localStorage if there's only one item
         if (arr.length > 1) {
             arr.splice(arr.indexOf(item), 1);
             localStorage.completed = arr;
@@ -262,7 +249,7 @@ function removeLocal(item, list) {
     }
 }
 
-/** loads items from toDo localStorage value */
+/** Loads items from toDo localStorage value */
 function getToDoLocalStorage() {
     if ("toDo" in localStorage) {
         const arr = localStorage.toDo.split(",");
@@ -275,7 +262,7 @@ function getToDoLocalStorage() {
     }
 }
 
-/** loads items from completed localStorage value */
+/** Loads items from completed localStorage value */
 function getCompletedLocalStorage() {
     if ("completed" in localStorage) {
         const arr = localStorage.completed.split(",");
@@ -287,3 +274,6 @@ function getCompletedLocalStorage() {
         }
     }
 }
+
+// calls function to initialise app when DOM content is loaded
+document.addEventListener("DOMContentLoaded", initialiseApp);
