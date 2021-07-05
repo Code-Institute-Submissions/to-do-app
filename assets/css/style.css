@@ -1,5 +1,5 @@
 /* google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap");
 
 /* global */
 * {
@@ -17,12 +17,19 @@ body {
     background-color: #f6f6f6;
 }
 
-h1 {
-    font-size: 250%;
+body > header {
+    background-color: #1fab89;
+    margin-bottom: 50px;
 }
 
-h1,
+h1 {
+    color: #fff;
+    font-size: 250%;
+    padding: 15px;
+}
+
 h2 {
+    font-weight: 400;
     padding: 15px;
 }
 
@@ -34,11 +41,19 @@ main {
 }
 
 footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     bottom: 0;
     height: 50px;
     width: 100%;
     background-color: #1fab89;
+}
+
+.fa-github {
+    color: #fff;
+    font-size: 200%;
 }
 
 /* note section */
