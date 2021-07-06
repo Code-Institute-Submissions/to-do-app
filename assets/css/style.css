@@ -176,6 +176,7 @@ textarea {
 }
 
 #add-conf {
+    visibility: hidden;
     margin-top: 15px;
     background-color: #d1d1d1;
     border-radius: 5px;

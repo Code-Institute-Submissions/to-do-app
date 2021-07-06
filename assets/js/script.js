@@ -5,7 +5,7 @@
 
 /** This function is responsible for adding event listeners to elements
  * that are present on page load, and loading previously added items
- * from localStorage
+ * from localStorage.
  */
 function initialiseApp() {
     const addNoteButton = document.getElementsByClassName("fa-plus")[0];
@@ -23,6 +23,7 @@ function initialiseApp() {
     confNote.addEventListener("click", addNote);
 
     const textArea = document.getElementById("note-input");
+    textArea.addEventListener("keyup", validateTextarea);
     textArea.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -34,6 +35,19 @@ function initialiseApp() {
 
     getToDoLocalStorage();
     getCompletedLocalStorage();
+}
+
+/** Handles validating that the user has entered text before
+ * they are able to submit. The button to submit will only
+ * show up when there is text in the textarea.
+ */
+function validateTextarea() {
+    const addConf = document.getElementById("add-conf");
+    if (this.value.length) {
+        addConf.style.visibility = "visible";
+    } else {
+        addConf.style.visibility = "hidden";
+    }
 }
 
 /** Darkens background, displays modal for user to enter text, and
@@ -49,7 +63,7 @@ function showModal() {
     document.getElementById("note-input").focus();
 }
 
-/** Removes darkened background and closes modal */
+/** Removes darkened background and closes modal. */
 function closeModal() {
     const modal = document.getElementById("modal");
     modal.style.display = "none";
@@ -66,7 +80,7 @@ function addNote() {
     const textArea = document.getElementById("note-input");
     const toDoContainer = document.getElementById("to-do");
 
-    if (textArea.value) {
+    if (textArea.value.length) {
         toDoContainer.appendChild(createNote(textArea.value, "todo"));
 
         addToLocalStorage(textArea.value, "todo");
@@ -75,13 +89,11 @@ function addNote() {
 
         textArea.value = "";
         textArea.focus();
-    } else {
-        alert("Please enter some text.");
     }
 }
 
-/** creates note element from given user input and returns it
- * to be used by other functions
+/** Creates note element from given user input and returns it
+ * to be used by other functions.
  */
 function createNote(input, list) {
     // creating element to be added to list
@@ -108,7 +120,7 @@ function createNote(input, list) {
     return div;
 }
 
-/** Adds user input to localStorage so it's saved on reload */
+/** Adds user input to localStorage so it's saved on reload. */
 function addToLocalStorage(input, list) {
     if (list === "todo") {
         if ("toDo" in localStorage) {
@@ -135,7 +147,7 @@ function addToLocalStorage(input, list) {
     }
 }
 
-/** Clears all items from either the to-do or completed list */
+/** Clears all items from either the to-do or completed list. */
 function clearAll() {
     // check which list to clear by grabbing class attribute
     if (this.classList.contains("to-do-clear")) {
@@ -147,7 +159,7 @@ function clearAll() {
     }
 }
 
-/** Adds event listeners to each button when new item is added to to-do list */
+/** Adds event listeners to each button when new item is added to to-do list. */
 function addToDoListeners() {
     const newItem = document.getElementById("to-do").lastChild;
     newItem
@@ -158,7 +170,7 @@ function addToDoListeners() {
         .addEventListener("click", completeItem);
 }
 
-/** Adds event listeners to each button when new item is added to completed list */
+/** Adds event listeners to each button when new item is added to completed list. */
 function addCompletedListeners() {
     const newItem = document.getElementById("completed").lastChild;
     newItem
@@ -169,7 +181,7 @@ function addCompletedListeners() {
         .addEventListener("click", uncheckItem);
 }
 
-/** Deletes single item from list */
+/** Deletes single item from list. */
 function deleteItem() {
     // checks which list the item is in so it can be correctly removed from localStorage
     if (
@@ -189,7 +201,7 @@ function deleteItem() {
 }
 
 /** Marks item as completed, moving it over to the completed section,
- * handling localStorage movement and adding appropriate event listener
+ * handling localStorage movement and adding appropriate event listener.
  */
 function completeItem() {
     const completedBox = document.getElementById("completed");
@@ -207,7 +219,7 @@ function completeItem() {
 }
 
 /** Marks item as incomplete, moving it over to the to-do section,
- * handling localStorage movement and adding appropriate event listener
+ * handling localStorage movement and adding appropriate event listener.
  */
 function uncheckItem() {
     const toDoBox = document.getElementById("to-do");
@@ -249,7 +261,7 @@ function removeLocal(item, list) {
     }
 }
 
-/** Loads items from toDo localStorage value */
+/** Loads items from toDo localStorage value. */
 function getToDoLocalStorage() {
     if ("toDo" in localStorage) {
         const arr = localStorage.toDo.split(",");
@@ -262,7 +274,7 @@ function getToDoLocalStorage() {
     }
 }
 
-/** Loads items from completed localStorage value */
+/** Loads items from completed localStorage value. */
 function getCompletedLocalStorage() {
     if ("completed" in localStorage) {
         const arr = localStorage.completed.split(",");
