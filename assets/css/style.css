@@ -200,6 +200,12 @@ textarea {
     top: 0;
 }
 
+/* note templates */
+.to-do-template,
+.completed-template {
+    display: none;
+}
+
 /* media queries */
 @media screen and (max-width: 1250px) {
     /* user note items */
