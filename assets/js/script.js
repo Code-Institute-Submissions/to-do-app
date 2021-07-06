@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-alert */
 /* eslint-disable no-restricted-syntax */
@@ -93,29 +94,20 @@ function addNote() {
 }
 
 /** Creates note element from given user input and returns it
- * to be used by other functions.
+ * to be used by other functions. The appropriate template is
+ * copied from the DOM and used to create new elements.
  */
 function createNote(input, list) {
-    // creating element to be added to list
     const div = document.createElement("div");
     if (list === "todo") {
-        div.innerHTML = `
-            <p>${input}</p>
-            <div class="button-cont">
-                <i class="fas fa-check-square"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        `;
+        div.innerHTML =
+            document.getElementsByClassName("to-do-template")[0].innerHTML;
     } else if (list === "completed") {
-        div.innerHTML = `
-            <p>${input}</p>
-            <div class="button-cont">
-                <i class="fas fa-undo-alt"></i>
-                <i class="fas fa-ban"></i>
-            </div>
-        `;
+        div.innerHTML =
+            document.getElementsByClassName("completed-template")[0].innerHTML;
     }
-    div.className = "to-do-item";
+    div.children[0].innerHTML = input;
+    div.setAttribute("class", "to-do-item");
 
     return div;
 }
