@@ -99,13 +99,20 @@ function addNote() {
  */
 function createNote(input, list) {
     const div = document.createElement("div");
-    if (list === "todo") {
-        div.innerHTML =
-            document.getElementsByClassName("to-do-template")[0].innerHTML;
-    } else if (list === "completed") {
-        div.innerHTML =
-            document.getElementsByClassName("completed-template")[0].innerHTML;
+
+    switch (list) {
+        case "todo":
+            div.innerHTML =
+                document.getElementsByClassName("to-do-template")[0].innerHTML;
+            break;
+        case "completed":
+            div.innerHTML =
+                document.getElementsByClassName(
+                    "completed-template"
+                )[0].innerHTML;
+            break;
     }
+
     div.children[0].innerHTML = input;
     div.setAttribute("class", "to-do-item");
 
@@ -114,28 +121,31 @@ function createNote(input, list) {
 
 /** Adds user input to localStorage so it's saved on reload. */
 function addToLocalStorage(input, list) {
-    if (list === "todo") {
-        if ("toDo" in localStorage) {
-            // convert localStorage into array to push new item
-            const arr = localStorage.toDo.split(",");
-            arr.push(input);
-            localStorage.toDo = arr;
-        } else {
-            // create new array and localStorage object
-            const arr = [input];
-            localStorage.toDo = arr;
-        }
-    } else if (list === "completed") {
-        if ("completed" in localStorage) {
-            // convert localStorage into array to push new item
-            const arr = localStorage.completed.split(",");
-            arr.push(input);
-            localStorage.completed = arr;
-        } else {
-            // create new array and localStorage object
-            const arr = [input];
-            localStorage.completed = arr;
-        }
+    switch (list) {
+        case "todo":
+            if ("toDo" in localStorage) {
+                // convert localStorage into array to push new item
+                const arr = localStorage.toDo.split(",");
+                arr.push(input);
+                localStorage.toDo = arr;
+            } else {
+                // create new array and localStorage object
+                const arr = [input];
+                localStorage.toDo = arr;
+            }
+            break;
+        case "completed":
+            if ("completed" in localStorage) {
+                // convert localStorage into array to push new item
+                const arr = localStorage.completed.split(",");
+                arr.push(input);
+                localStorage.completed = arr;
+            } else {
+                // create new array and localStorage object
+                const arr = [input];
+                localStorage.completed = arr;
+            }
+            break;
     }
 }
 
@@ -234,22 +244,26 @@ function uncheckItem() {
  * avoid an empty string.
  */
 function removeLocal(item, list) {
-    if (list === "todo") {
-        const arr = localStorage.toDo.split(",");
-        if (arr.length > 1) {
-            arr.splice(arr.indexOf(item), 1);
-            localStorage.toDo = arr;
-        } else {
-            delete localStorage.toDo;
-        }
-    } else if (list === "completed") {
-        const arr = localStorage.completed.split(",");
-        if (arr.length > 1) {
-            arr.splice(arr.indexOf(item), 1);
-            localStorage.completed = arr;
-        } else {
-            delete localStorage.completed;
-        }
+    let arr;
+    switch (list) {
+        case "todo":
+            arr = localStorage.toDo.split(",");
+            if (arr.length > 1) {
+                arr.splice(arr.indexOf(item), 1);
+                localStorage.toDo = arr;
+            } else {
+                delete localStorage.toDo;
+            }
+            break;
+        case "completed":
+            arr = localStorage.completed.split(",");
+            if (arr.length > 1) {
+                arr.splice(arr.indexOf(item), 1);
+                localStorage.completed = arr;
+            } else {
+                delete localStorage.completed;
+            }
+            break;
     }
 }
 
