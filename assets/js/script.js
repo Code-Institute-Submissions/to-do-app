@@ -34,6 +34,13 @@ function initialiseApp() {
         }
     });
 
+    window.addEventListener("storage", function () {
+        document.getElementById("to-do").innerHTML = "";
+        document.getElementById("completed").innerHTML = "";
+        getToDoLocalStorage();
+        getCompletedLocalStorage();
+    });
+
     getToDoLocalStorage();
     getCompletedLocalStorage();
 }
