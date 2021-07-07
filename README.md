@@ -8,11 +8,11 @@ The site is designed to be responsive across all devices, making it easy to use 
 
 ### User Stories:
 
--   The user wants a place to create and delete notes.
+-   The user wants a place to create notes.
+-   The user wants to be able to delete notes.
 -   The user is looking for a simple site that is easy to use.
 -   The user wants to be able to keep track of their notes by marking/un-marking them as complete.
 -   The user wants their previously made notes to persist after leaving the site.
--   The user wants to be able to get in touch with any queries/issues they're experiencing.
 
 ### Design
 
