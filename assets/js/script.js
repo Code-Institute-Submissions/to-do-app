@@ -1,9 +1,3 @@
-/* eslint-disable prefer-destructuring */
-/* eslint-disable comma-dangle */
-/* eslint-disable no-alert */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-use-before-define */
-
 /** This function is responsible for adding event listeners to elements
  * that are present on page load, and loading previously added items
  * from localStorage.
