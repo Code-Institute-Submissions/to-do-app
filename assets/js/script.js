@@ -25,6 +25,7 @@ function initialiseApp() {
 
     const textArea = document.getElementById("note-input");
     textArea.addEventListener("keyup", validateTextarea);
+    textArea.addEventListener("keydown", restrictTextareaChars);
     textArea.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -43,6 +44,20 @@ function initialiseApp() {
 
     getToDoLocalStorage();
     getCompletedLocalStorage();
+}
+
+/** Restricts user characters entered into the textarea. Displays
+ * a counter that shows the maximum amount of characters the user has
+ * left to use. Stops users being able to exceed the character limit.
+ */
+function restrictTextareaChars(event) {
+    if (this.value.length <= 150) {
+        document.getElementById("chars").innerText = 150 - this.value.length;
+    } else {
+        if (event.key != "Backspace") {
+            event.preventDefault();
+        }
+    }
 }
 
 /** Handles validating that the user has entered text before
