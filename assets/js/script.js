@@ -149,48 +149,6 @@ function createNote(input, list) {
     return div;
 }
 
-/** Adds user input to localStorage so it's saved on reload. */
-function addToLocalStorage(input, list) {
-    switch (list) {
-        case "todo":
-            if ("toDo" in localStorage) {
-                // convert localStorage into array to push new item
-                const arr = localStorage.toDo.split(",");
-                arr.push(input);
-                localStorage.toDo = arr;
-            } else {
-                // create new array and localStorage object
-                const arr = [input];
-                localStorage.toDo = arr;
-            }
-            break;
-        case "completed":
-            if ("completed" in localStorage) {
-                // convert localStorage into array to push new item
-                const arr = localStorage.completed.split(",");
-                arr.push(input);
-                localStorage.completed = arr;
-            } else {
-                // create new array and localStorage object
-                const arr = [input];
-                localStorage.completed = arr;
-            }
-            break;
-    }
-}
-
-/** Clears all items from either the to-do or completed list. */
-function clearAll() {
-    // check which list to clear by grabbing class attribute
-    if (this.classList.contains("to-do-clear")) {
-        document.getElementById("to-do").innerHTML = "";
-        delete localStorage.toDo;
-    } else {
-        document.getElementById("completed").innerHTML = "";
-        delete localStorage.completed;
-    }
-}
-
 /** Adds event listeners to each button when new item is added to to-do list. */
 function addToDoListeners() {
     const newItem = document.getElementById("to-do").lastChild;
@@ -211,6 +169,18 @@ function addCompletedListeners() {
     newItem
         .getElementsByClassName("fa-undo-alt")[0]
         .addEventListener("click", uncheckItem);
+}
+
+/** Clears all items from either the to-do or completed list. */
+function clearAll() {
+    // check which list to clear by grabbing class attribute
+    if (this.classList.contains("to-do-clear")) {
+        document.getElementById("to-do").innerHTML = "";
+        delete localStorage.toDo;
+    } else {
+        document.getElementById("completed").innerHTML = "";
+        delete localStorage.completed;
+    }
 }
 
 /** Deletes single item from list. */
@@ -266,6 +236,36 @@ function uncheckItem() {
     const item = this.closest(".to-do-item").children[0].innerHTML;
     removeLocal(item, "completed");
     addToLocalStorage(item, "todo");
+}
+
+/** Adds user input to localStorage so it's saved on reload. */
+function addToLocalStorage(input, list) {
+    switch (list) {
+        case "todo":
+            if ("toDo" in localStorage) {
+                // convert localStorage into array to push new item
+                const arr = localStorage.toDo.split(",");
+                arr.push(input);
+                localStorage.toDo = arr;
+            } else {
+                // create new array and localStorage object
+                const arr = [input];
+                localStorage.toDo = arr;
+            }
+            break;
+        case "completed":
+            if ("completed" in localStorage) {
+                // convert localStorage into array to push new item
+                const arr = localStorage.completed.split(",");
+                arr.push(input);
+                localStorage.completed = arr;
+            } else {
+                // create new array and localStorage object
+                const arr = [input];
+                localStorage.completed = arr;
+            }
+            break;
+    }
 }
 
 /** Removes a single item from localStorage, given the item's text
