@@ -184,6 +184,8 @@ textarea {
     border-radius: 5px;
     border-bottom: 3px solid #1fab89;
     padding: 15px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 #add-conf:hover {

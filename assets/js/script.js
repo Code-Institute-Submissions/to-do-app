@@ -25,7 +25,7 @@ function initialiseApp() {
 
     const textArea = document.getElementById("note-input");
     textArea.addEventListener("keyup", validateTextarea);
-    textArea.addEventListener("keydown", restrictTextareaChars);
+    textArea.addEventListener("keyup", textareaCharCounter);
     textArea.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -46,18 +46,12 @@ function initialiseApp() {
     getCompletedLocalStorage();
 }
 
-/** Restricts user characters entered into the textarea. Displays
- * a counter that shows the maximum amount of characters the user has
- * left to use. Stops users being able to exceed the character limit.
+/** Keeps track of the amount of characters a user
+ * has left to type before they hit the maximum amount.
  */
-function restrictTextareaChars(event) {
-    if (this.value.length <= 150) {
-        document.getElementById("chars").innerText = 150 - this.value.length;
-    } else {
-        if (event.key != "Backspace") {
-            event.preventDefault();
-        }
-    }
+function textareaCharCounter() {
+    const charCounter = document.getElementById("chars");
+    charCounter.innerText = 150 - this.value.length;
 }
 
 /** Handles validating that the user has entered text before
@@ -102,6 +96,7 @@ function closeModal() {
 function addNote() {
     const textArea = document.getElementById("note-input");
     const toDoContainer = document.getElementById("to-do");
+    const charCounter = document.getElementById("chars");
 
     if (textArea.value.length) {
         toDoContainer.appendChild(createNote(textArea.value, "todo"));
@@ -109,6 +104,8 @@ function addNote() {
         addToLocalStorage(textArea.value, "todo");
 
         addToDoListeners();
+
+        charCounter.innerText = "150";
 
         textArea.value = "";
         textArea.focus();
