@@ -23,9 +23,30 @@ function initialiseApp() {
     const confNote = document.getElementById("add-conf");
     confNote.addEventListener("click", addNote);
 
+    window.addEventListener("storage", function () {
+        document.getElementById("to-do").innerHTML = "";
+        document.getElementById("completed").innerHTML = "";
+        getToDoLocalStorage();
+        getCompletedLocalStorage();
+    });
+
+    initialiseTextarea();
+
+    getToDoLocalStorage();
+    getCompletedLocalStorage();
+}
+
+/** Handles adding necessary event handlers to the modal textarea
+ * upon page load. This includes submission/cancelling using keys,
+ * text validation, and character counting.
+ */
+function initialiseTextarea() {
     const textArea = document.getElementById("note-input");
+
     textArea.addEventListener("keyup", validateTextarea);
+
     textArea.addEventListener("keyup", textareaCharCounter);
+
     textArea.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -34,16 +55,6 @@ function initialiseApp() {
             closeModal();
         }
     });
-
-    window.addEventListener("storage", function () {
-        document.getElementById("to-do").innerHTML = "";
-        document.getElementById("completed").innerHTML = "";
-        getToDoLocalStorage();
-        getCompletedLocalStorage();
-    });
-
-    getToDoLocalStorage();
-    getCompletedLocalStorage();
 }
 
 /** Keeps track of the amount of characters a user
