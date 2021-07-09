@@ -22,7 +22,7 @@ The site is designed to be responsive across all devices, making it easy to use 
 ### Design
 
 -   Colour Scheme
-    -   The colours used across the site are a mix of blue/green shades. They are all cool tones, which are not to harsh on the eye.
+    -   The colours used across the site are a mix of blue/green shades. They are all cool tones, which are not too harsh on the eye.
 -   Typography
     -   The Montserrat font is used across the page, with Sans-Serif as the fallback. This font is clear and simple, and does not distract the user too much. It's simplicity is well suited to an app of this nature.
 -   Imagery
@@ -67,7 +67,7 @@ The site is designed to be responsive across all devices, making it easy to use 
 
     -   Users' notes are saved to localStorage and loaded on page load.
     -   localStorage is amended every time an aforementioned feature is actioned.
-    -   When the user adds an item, it is added to the toDo value in localStorage/
+    -   When the user adds an item, it is added to the toDo value in localStorage.
     -   When the user checks an item or unchecks an item, it is moved over to the respective location in localStorage.
     -   When the user deletes or clears items, the items are deleted from the appropriate location in localStorage.
 
@@ -110,3 +110,28 @@ The site is designed to be responsive across all devices, making it easy to use 
 ## Testing
 
 Find testing information in this separate file: [TESTING.md](readme/TESTING.md)
+
+## Deployment
+
+This project is hosted on Github Pages. This method is as follows:
+
+-   Log in to Github at https://github.com/
+-   Navigate to the project repository you wish to host on Github Pages.
+-   Click on "Settings" in the menu bar above the repo.
+-   In the menu bar to the left on the settings page, click "Pages"
+-   Under "Source", select the dropdown for "Branch" and select "master", or "main" in other cases, and then ensure that the correct directory is selected. In this case it is "root".
+-   Click save, give up to 5 minutes for the site to deploy. A message will read "Your site is published at..." at the top of the "Pages" page.
+
+## Credits
+
+### Code
+
+-   All code is unique and written by the developer.
+
+### Content
+
+-   All content was written by the developer.
+
+### Acknowledgements
+
+-   Thank you to my mentor for support through the stages of this project.

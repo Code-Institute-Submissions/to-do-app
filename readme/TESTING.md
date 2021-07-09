@@ -83,4 +83,4 @@ There were a few bugs that needed to be solved throughout the development proces
 
 ### Existing Bugs
 
-One known issue if that if a user has typed an extremely long string of characters, it can sometimes overflow into the buttons next to the note, if being viewed on a desktop. This is very rare in practice as there are no commonly known/used words that cause this to happen. I have only re-created this bug by typing a single string of random characters with no spaces.
+One known issue is that if a user has typed an extremely long string of characters, it can sometimes overflow into the buttons next to the note, if being viewed on a desktop. This is very rare in practice as there are no commonly known/used words that cause this to happen. I have only re-created this bug by typing a single string of random characters with no spaces.
