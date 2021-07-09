@@ -13,6 +13,7 @@ The site is designed to be responsive across all devices, making it easy to use 
 -   The user is looking for a simple site that is easy to use.
 -   The user wants to be able to keep track of their notes by marking/un-marking them as complete.
 -   The user wants their previously made notes to persist after leaving the site.
+-   The user wants to their notes to sync across tabs without having to refresh the page.
 
 ### Design
 
@@ -23,50 +24,51 @@ The site is designed to be responsive across all devices, making it easy to use 
 -   Imagery
     -   While there are no images present on the site, the icons and style used is clean and coherent, with colours appropriately matched across the page.
 
+### Project Wireframes
+
+-   [Desktop View](readme/wireframes/desktop.png)
+-   [Mobile View](readme/wireframes/mobile.png)
+
 ## Features
 
 ### Existing Features
 
 -   Note Area
+
     -   The note area is the central focus of the page. It is immediately clear to the user and is where all to-do/completed items are stored for the user to easily view.
 
-![Note Area](readme/images/note-area.JPG)
-
 -   Add Note Section
-    -   This section is where users will type in their notes. The user first clicks on the "Add Item" button to bring up a popup modal. This modal gives the user a large textbox so they can write long notes. As this modal appears, the background is darkened so the user can focus on solely the popup.
-    -   There is a check in the code to ensure the user has entered some text before the note is added. The user will be alerted if the textbox is empty upon submitting.
 
-![Add Item 1](readme/images/add-item-1.JPG)
-![Add Item 2](readme/images/add-item-2.JPG)
+    -   This section is where users will type in their notes. The user first clicks on the "Add Item" button to bring up a popup modal. This modal gives the user a large textbox. As this modal appears, the background is darkened so the user can focus on solely the popup.
+    -   There is a check in the code to ensure the user has entered some text before the note is added. The user will be alerted if the textbox is empty upon submitting.
+    -   There is a character counter in the modal that lets the user know how many more characters they are able to type before hitting the limit of 150.
 
 -   To-Do List Items
+
     -   When an item is initially added to the list, it will first appear in the "To Do" section, so the user knows the task is still to be completed.
     -   Each item can be checked off; this will move the item over to the "Completed" section.
     -   Each item can be deleted; this removes the item from the list.
 
-![To Do Item](readme/images/to-do-item.JPG)
-
 -   Completed List Items
+
     -   When a to-do item is marked as complete using the check button, it is moved over to the completed section.
     -   Each item can be marked as incomplete by clicking the "undo" button. This moves the item back over to the "To Do" section.
     -   Each item can be deleted; this removes the item from the list.
 
-![Completed Item](readme/images/completed-item.JPG)
-
 -   Clear All Buttons
+
     -   Both the "To Do" and "Completed" sections have trash icons at the top. This button clears all list items from the respective section.
 
-![Clear Icon](readme/images/clear-icon.JPG)
-
 -   Items Saved to Local Storage
+
     -   Users' notes are saved to localStorage and loaded on page load.
     -   localStorage is amended every time an aforementioned feature is actioned.
     -   When the user adds an item, it is added to the toDo value in localStorage/
     -   When the user checks an item or unchecks an item, it is moved over to the respective location in localStorage.
     -   When the user deletes or clears items, the items are deleted from the appropriate location in localStorage.
 
-![localStorage notes](readme/images/local-storage-notes.JPG)
-![localStorage object](readme/images/local-storage.JPG)
+-   Items Sync Between Tabs
+    -   When localStorage changes in any way, the changes will be instantly implemented in all tabs without having to reload the page.
 
 ### Features to Implement in the Future
 
@@ -74,3 +76,29 @@ The site is designed to be responsive across all devices, making it easy to use 
     -   localStorage has constraints that would be resolved if a database was used. For example, localStorage can only store around 5MB of data. It also requires more logic to retrieve data as it's all stored in a string.
 -   Drag and drop movement for notes.
 -   Multiple notebooks that the user can switch between.
+-   Pagination for note section overflow instead of current implementation (scroll).
+
+## Technologies
+
+### Languages Used
+
+-   HTML5
+-   CSS3
+-   Javascript
+
+### Frameworks, Libraries and Programs Used
+
+-   [Google Fonts](https://fonts.google.com/)
+    -   This project uses Google Fonts to style fonts across the website.
+-   [Font Awesome](https://fontawesome.com/)
+    -   This project uses the Font Awesome CDN for icons across the website.
+-   [Balsamiq](https://balsamiq.com/)
+    -   Balsamiq was used for creating the wireframes used to design the project.
+-   [Git](https://git-scm.com/)
+    -   Git was used for version control, using Git Bash terminal for Windows to commit, push and merge code.
+-   [Github](https://github.com/)
+    -   Github is used to store the project after being pushed to Git. It is also used for hosting the site.
+-   [Prettier](https://prettier.io/)
+    -   Prettier was used for formatting all of the HTML, CSS and Javascript code.
+-   [ESLint](https://eslint.org/)
+    -   The Airbnb ESLint configuration was used to lint code to an industry-standard level.
