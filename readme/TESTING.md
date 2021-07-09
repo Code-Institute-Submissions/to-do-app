@@ -53,3 +53,34 @@ Google Lighthouse was also used to check the website. [Find the report here](htt
     -   The 'Window: storage event' is used so that whenever there is any change to localStorage, the new changes are instantly updated on the site without needing to refresh. This means that whenever a user adds, deletes, or moves a note, it is instantly reflected in all other local instances of the website.
 
 ![Window sync](/readme/images/sync-example.gif)
+
+## Further Testing
+
+-   localStorage testing
+
+    -   Extensive testing was carried out on using localStorage effectively and without error. At first, I began by creating individual keys for each note, with the note content as the value, but this proved ineffective and overly complicated to extract the data in the correct order. I eventually settled on having all the to-do items in one string value and the completed ones in another. I would then split the string into an array and loop through each item.
+    -   Each move of localStorage was tested numerous times, making sure each item was being created, deleted and migrated correctly.
+
+-   Character counting
+
+    -   Extra testing was carried out to ensure the character counting feature was implemented correctly. A few changes needed to be made from the initial implementation; it was, at first, restricting the characters using purely JavaScript, but was eventually changed to handle the restriction in HTML and the JavaScript was subsequently only responsible for the counting.
+
+-   The site was checked in the following browsers:
+
+    -   Microsoft Edge
+    -   Mozilla Firefox
+    -   Google Chrome
+
+-   The social link was tested and directs to the correct place.
+
+-   The site was resized and checked at every breakpoint using developer tools, to ensure everything was as intended across all device sizes.
+
+-   Peers were also asked to review the site to point out existing errors.
+
+## Bugs
+
+There were a few bugs that needed to be solved throughout the development process. As mentioned, issues came up with localStorage; this was the main problem I experienced throughout. As data is stored in strings in localStorage, I had to decide and figure out the most effective and clean way to extract that data to be appropriately represented.
+
+### Existing Bugs
+
+One known issue if that if a user has typed an extremely long string of characters, it can sometimes overflow into the buttons next to the note, if being viewed on a desktop. This is very rare in practice as there are no commonly known/used words that cause this to happen. I have only re-created this bug by typing a single string of random characters with no spaces.
