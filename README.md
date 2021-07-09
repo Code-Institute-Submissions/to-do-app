@@ -1,16 +1,20 @@
 # To-Do List
 
+[View deployed site](https://jacobshortall.github.io/to-do-app)
+
 This website is a fully responsive JavaScript to-do app that allows users to add, delete, check and uncheck notes. The site is targeted towards people who want a simple to-do list interface in the browser that saves their notes for next time they visit the page.
 
 The site is designed to be responsive across all devices, making it easy to use for all potential site visitors.
+
+![Live site](readme/images/live-site.JPG)
 
 ## User Experience (UX)
 
 ### User Stories:
 
+-   The user is looking for a simple site that is easy to use.
 -   The user wants a place to create notes.
 -   The user wants to be able to delete notes.
--   The user is looking for a simple site that is easy to use.
 -   The user wants to be able to keep track of their notes by marking/un-marking them as complete.
 -   The user wants their previously made notes to persist after leaving the site.
 -   The user wants to their notes to sync across tabs without having to refresh the page.
@@ -84,7 +88,7 @@ The site is designed to be responsive across all devices, making it easy to use 
 
 -   HTML5
 -   CSS3
--   Javascript
+-   JavaScript
 
 ### Frameworks, Libraries and Programs Used
 
@@ -99,6 +103,10 @@ The site is designed to be responsive across all devices, making it easy to use 
 -   [Github](https://github.com/)
     -   Github is used to store the project after being pushed to Git. It is also used for hosting the site.
 -   [Prettier](https://prettier.io/)
-    -   Prettier was used for formatting all of the HTML, CSS and Javascript code.
+    -   Prettier was used for formatting all of the HTML, CSS and JavaScript code.
 -   [ESLint](https://eslint.org/)
     -   The Airbnb ESLint configuration was used to lint code to an industry-standard level.
+
+## Testing
+
+Find testing information in this separate file: [TESTING.md](readme/TESTING.md)
