@@ -123,7 +123,14 @@ section {
 }
 
 .to-do-item p {
+    word-wrap: anywhere;
     width: 70%;
+}
+
+.button-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button-cont i {
@@ -212,12 +219,6 @@ textarea {
 
 /* media queries */
 @media screen and (max-width: 1300px) {
-    /* user note items */
-    .to-do-item {
-        flex-direction: column;
-        text-align: center;
-    }
-
     /* note section */
     section {
         width: 50%;
@@ -236,7 +237,7 @@ textarea {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 950px) {
     /* global */
     h1 {
         text-align: center;
@@ -260,5 +261,15 @@ textarea {
 
     textarea {
         width: 80%;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    p {
+        font-size: 90%;
+    }
+
+    .button-cont i {
+        font-size: 175%;
     }
 }
