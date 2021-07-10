@@ -1,4 +1,4 @@
-/* Used for multiple switch statements throughout the script to prevent 
+/* Used for multiple switch statements throughout the script to prevent
 continual string creation */
 const itemType = {
     todo: "todo",
@@ -24,7 +24,10 @@ function initialiseApp() {
     const confNote = document.getElementById("add-conf");
     confNote.addEventListener("click", addNote);
 
-    window.addEventListener("storage", function () {
+    const errorButton = document.getElementById("error-button");
+    errorButton.addEventListener("click", closeListError);
+
+    window.addEventListener("storage", () => {
         document.getElementById("to-do").innerHTML = "";
         document.getElementById("completed").innerHTML = "";
         getToDoLocalStorage();
@@ -142,6 +145,8 @@ function createNote(input, list) {
                     "completed-template"
                 )[0].innerHTML;
             break;
+        default:
+            handleListError();
     }
 
     div.children[0].innerHTML = input;
@@ -266,6 +271,8 @@ function addToLocalStorage(input, list) {
                 localStorage.completed = arr;
             }
             break;
+        default:
+            handleListError();
     }
 }
 
@@ -295,6 +302,8 @@ function removeLocal(item, list) {
                 delete localStorage.completed;
             }
             break;
+        default:
+            handleListError();
     }
 }
 
@@ -322,6 +331,26 @@ function getCompletedLocalStorage() {
             addCompletedListeners();
         }
     }
+}
+
+/** Shows up popup modal if there is some kind of unhandled error
+ * to do with any of the switch statements in the file.
+ */
+function handleListError() {
+    const errorModal = document.getElementById("error-modal");
+    errorModal.style.display = "flex";
+
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "block";
+}
+
+/** Closes popup error modal. */
+function closeListError() {
+    const errorModal = document.getElementById("error-modal");
+    errorModal.style.display = "none";
+
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = "none";
 }
 
 // calls function to initialise app when DOM content is loaded
