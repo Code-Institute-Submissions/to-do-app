@@ -1,3 +1,10 @@
+/* Used for multiple switch statements throughout the script to prevent 
+continual string creation */
+const itemType = {
+    todo: "todo",
+    completed: "completed"
+};
+
 /** This function is responsible for adding event listeners to elements
  * that are present on page load, and loading previously added items
  * from localStorage.
@@ -125,11 +132,11 @@ function createNote(input, list) {
     const div = document.createElement("div");
 
     switch (list) {
-        case "todo":
+        case itemType.todo:
             div.innerHTML =
                 document.getElementsByClassName("to-do-template")[0].innerHTML;
             break;
-        case "completed":
+        case itemType.completed:
             div.innerHTML =
                 document.getElementsByClassName(
                     "completed-template"
@@ -235,7 +242,7 @@ function uncheckItem() {
 /** Adds user input to localStorage so it's saved on reload. */
 function addToLocalStorage(input, list) {
     switch (list) {
-        case "todo":
+        case itemType.todo:
             if ("toDo" in localStorage) {
                 // convert localStorage into array to push new item
                 const arr = localStorage.toDo.split(",");
@@ -247,7 +254,7 @@ function addToLocalStorage(input, list) {
                 localStorage.toDo = arr;
             }
             break;
-        case "completed":
+        case itemType.completed:
             if ("completed" in localStorage) {
                 // convert localStorage into array to push new item
                 const arr = localStorage.completed.split(",");
@@ -270,7 +277,7 @@ function addToLocalStorage(input, list) {
 function removeLocal(item, list) {
     let arr;
     switch (list) {
-        case "todo":
+        case itemType.todo:
             arr = localStorage.toDo.split(",");
             if (arr.length > 1) {
                 arr.splice(arr.indexOf(item), 1);
@@ -279,7 +286,7 @@ function removeLocal(item, list) {
                 delete localStorage.toDo;
             }
             break;
-        case "completed":
+        case itemType.completed:
             arr = localStorage.completed.split(",");
             if (arr.length > 1) {
                 arr.splice(arr.indexOf(item), 1);
