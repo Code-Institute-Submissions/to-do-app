@@ -45,6 +45,8 @@ Google Lighthouse was also used to check the website. [Find the report here](htt
 -   The user wants their previously made notes to persist after leaving the site.
     -   localStorage is used to store user note values and types in the browser for the next time they visit the page. These notes are then added to the appropriate note section on page load.
     -   Every time a feature related to user notes is actioned on the page, localStorage is updated accordingly. For example, if a note is moved to a different section, or if a note is added or deleted.
+    -   Extensive testing was carried out on using localStorage effectively and without error. At first, I began by creating individual keys for each note, with the note content as the value, but this proved ineffective and overly complicated to extract the data in the correct order. I eventually settled on having all the to-do items in one string value and the completed ones in another. I would then split the string into an array and loop through each item.
+    -   Each move of localStorage was tested numerous times, making sure each item was being created, deleted and migrated correctly.
 
 ![Example notes](/readme/images/local-storage-notes.JPG)
 ![Example localStorage](/readme/images/local-storage.JPG)
@@ -54,22 +56,28 @@ Google Lighthouse was also used to check the website. [Find the report here](htt
 
 ![Window sync](/readme/images/sync-example.gif)
 
-## Further Testing
-
--   localStorage testing
-
-    -   Extensive testing was carried out on using localStorage effectively and without error. At first, I began by creating individual keys for each note, with the note content as the value, but this proved ineffective and overly complicated to extract the data in the correct order. I eventually settled on having all the to-do items in one string value and the completed ones in another. I would then split the string into an array and loop through each item.
-    -   Each move of localStorage was tested numerous times, making sure each item was being created, deleted and migrated correctly.
-
--   Character counting
-
+-   The user should be limited on characters and be given feedback about when they're running out.
+    -   As mentioned, as the user types a character, the character counter is instantly changed to reflect the amount of characters they have left to type.
     -   Extra testing was carried out to ensure the character counting feature was implemented correctly. A few changes needed to be made from the initial implementation; it was, at first, restricting the characters using purely JavaScript, but was eventually changed to handle the restriction in HTML and the JavaScript was subsequently only responsible for the counting.
+
+## Further Testing
 
 -   The site was checked in the following browsers:
 
     -   Microsoft Edge
     -   Mozilla Firefox
     -   Google Chrome
+
+-   The site was checked in the Firefox dev tools device emulator on the following devices:
+
+    -   Galaxy S9/S9+
+    -   iPad
+    -   iPhone 6/7/8
+    -   iPhone 6/7/8 Plus
+    -   iPhone X/XS
+    -   Kindle Fire HDX Linux
+    -   Laptop with HiDPI
+    -   Laptop with MDPI
 
 -   The social link was tested and directs to the correct place.
 
@@ -81,6 +89,4 @@ Google Lighthouse was also used to check the website. [Find the report here](htt
 
 There were a few bugs that needed to be solved throughout the development process. As mentioned, issues came up with localStorage; this was the main problem I experienced throughout. As data is stored in strings in localStorage, I had to decide and figure out the most effective and clean way to extract that data to be appropriately represented.
 
-### Existing Bugs
-
-One known issue is that if a user has typed an extremely long string of characters, it can sometimes overflow into the buttons next to the note, if being viewed on a desktop. This is very rare in practice as there are no commonly known/used words that cause this to happen. I have only re-created this bug by typing a single string of random characters with no spaces.
+Another bug that was present was that, occasionally, if a user typed in an extremely long string it would overflow out of the element. This was fixed by using a word-wrap rule in CSS.

@@ -18,6 +18,7 @@ The site is designed to be responsive across all devices, making it easy to use 
 -   The user wants to be able to keep track of their notes by marking/un-marking them as complete.
 -   The user wants their previously made notes to persist after leaving the site.
 -   The user wants to their notes to sync across tabs without having to refresh the page.
+-   The user should be limited on characters and be given feedback about when they're running out.
 
 ### Design
 
